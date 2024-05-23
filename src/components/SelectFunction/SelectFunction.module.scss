@@ -1,0 +1,20 @@
+.title {
+    text-align: center;
+	margin-bottom: 1em;
+}
+.link {
+	display: block;
+	width: 100%;
+	color: #fff;
+	padding: 2em;
+	margin: 1em 0;
+	text-decoration: none;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	background-color: #707070;
+	transition: background-color 0.3s, border-color 0.3s;
+	&:hover {
+		background-color: #333;
+		border-color: #707070;
+	}
+}

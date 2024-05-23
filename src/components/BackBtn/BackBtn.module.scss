@@ -1,0 +1,15 @@
+.backBtn {
+	display: inline-block;
+    align-self: flex-end;
+	color: #fff;
+	text-decoration: none;
+	padding: 1em 2em;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	background-color: #707070;
+	transition: background-color 0.3s, border-color 0.3s;
+	&:hover {
+		background-color: #333;
+		border-color: #707070;
+	}
+}
