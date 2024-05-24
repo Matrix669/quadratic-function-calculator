@@ -1,10 +1,19 @@
+.errorBox {
+    margin: 0 auto;
+    &Title {
+        margin-bottom: 0.5em;
+    }
+    & p {
+        font-size: 2.4rem;
+    }
+}
 .backBtn {
 	display: inline-block;
     align-self: flex-end;
+    margin-top: 1em;
 	padding: 1em 2em;
 	border-radius: 12px;
-	border: 1px solid transparent;
-	background-color: #707070;
+	border: 1px solid #707070;
 	transition: background-color 0.3s, border-color 0.3s;
 	&:hover {
 		background-color: #333;

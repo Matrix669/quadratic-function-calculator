@@ -1,6 +1,34 @@
+import { useLocation } from 'react-router-dom'
 import { BoxBtn } from '../BoxBtn/BoxBtn'
+import { useState } from 'react'
+import { CalculateBtn } from '../CalculateBtn/CalculateBtn'
+import { getDataFunctionForm } from '../utils/getDataFunctionForm'
 
 export function FactoredForm() {
+	const location = useLocation()
+	const [inputData1, setInputData1] = useState('')
+	const [inputData2, setInputData2] = useState('')
+	const [inputData3, setInputData3] = useState('')
+	const [result, setResult] = useState(null)
+
+	function getDataInput(data, event) {
+		const inputValue = event.target.value
+		const numsData = parseFloat(inputValue)
+		data(numsData)
+	}
+
+	function handleResult() {
+		const result = getDataFunctionForm(location.pathname, inputData1, inputData2, inputData3)
+		setResult(result)
+	}
+
+	function handleReset() {
+		setInputData1('')
+		setInputData2('')
+		setInputData3('')
+		setResult(null)
+	}
+
 	return (
 		<>
 			<h2 className='title-fun'>Postać iloczynowa:</h2>
@@ -8,24 +36,38 @@ export function FactoredForm() {
 
 			<div>
 				<p className='user-fun'>
-					y = <input type='text' placeholder='a' />
-					(x - <input type='text' placeholder='x1' />) * ( x - <input type='text' placeholder='x2' />)
+					y ={' '}
+					<input
+						type='number'
+						placeholder='a'
+						value={inputData1}
+						onChange={event => getDataInput(setInputData1, event)}
+					/>
+					(x -{' '}
+					<input
+						type='number'
+						placeholder='x1'
+						value={inputData2}
+						onChange={event => getDataInput(setInputData2, event)}
+					/>
+					) * ( x -{' '}
+					<input
+						type='number'
+						placeholder='x2'
+						value={inputData3}
+						onChange={event => getDataInput(setInputData3, event)}
+					/>
+					)
 				</p>
 			</div>
 
+			<CalculateBtn onHandleResult={handleResult} />
+
 			<div className='container-result'>
 				<h3 className='title-result'>Wyniki:</h3>
-				<p>&Delta; Delta = </p>
-				<p>Komunikat o tym czy delta jest wieksza od zera itd</p>
-				<p>x1 = </p>
-				<p>x2 = </p>
-				<p>p = </p>
-				<p>q = </p>
-				<p>Miejscami zerowymi są: </p>
-				<p>Współrzędne punktu przecięcia z osią OY: (0; -2.0 )</p>
-				<p>Współrzędne wierzchołka to W=( -0.5 , -2.5 )</p>
+				{result}
 			</div>
-			<BoxBtn />
+			<BoxBtn onHandleReset={handleReset} />
 		</>
 	)
 }

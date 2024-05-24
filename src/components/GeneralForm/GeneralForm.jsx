@@ -6,20 +6,15 @@ import { getDataFunctionForm } from '../utils/getDataFunctionForm'
 
 export function GeneralForm() {
 	const location = useLocation()
-	const [inputData1, setinputData1] = useState('')
-	const [inputData2, setinputData2] = useState('')
-	const [inputData3, setinputData3] = useState('')
+	const [inputData1, setInputData1] = useState('')
+	const [inputData2, setInputData2] = useState('')
+	const [inputData3, setInputData3] = useState('')
 	const [result, setResult] = useState(null)
 
-	function getInputData1(event) {
-		setinputData1(event.target.value)
-	}
-
-	function getInputData2(event) {
-		setinputData2(event.target.value)
-	}
-	function getInputData3(event) {
-		setinputData3(event.target.value)
+	function getDataInput(data, event) {
+		const inputValue = event.target.value
+		const numsData = parseFloat(inputValue)
+		data(numsData)
 	}
 
 	function handleResult() {
@@ -28,9 +23,9 @@ export function GeneralForm() {
 	}
 
 	function handleReset() {
-		setinputData1('')
-		setinputData2('')
-		setinputData3('')
+		setInputData1('')
+		setInputData2('')
+		setInputData3('')
 		setResult(null)
 	}
 
@@ -43,9 +38,27 @@ export function GeneralForm() {
 
 			<div>
 				<p className='user-fun'>
-					y = <input type='text' placeholder='a' value={inputData1} onChange={getInputData1} />x<sup>2</sup> +{' '}
-					<input type='text' placeholder='b' value={inputData2} onChange={getInputData2} /> x +{' '}
-					<input type='text' placeholder='c' value={inputData3} onChange={getInputData3} />
+					y ={' '}
+					<input
+						type='number'
+						placeholder='a'
+						value={inputData1}
+						onChange={event => getDataInput(setInputData1, event)}
+					/>
+					x<sup>2</sup> +{' '}
+					<input
+						type='number'
+						placeholder='b'
+						value={inputData2}
+						onChange={event => getDataInput(setInputData2, event)}
+					/>{' '}
+					x +{' '}
+					<input
+						type='number'
+						placeholder='c'
+						value={inputData3}
+						onChange={event => getDataInput(setInputData3, event)}
+					/>
 				</p>
 			</div>
 			<CalculateBtn onHandleResult={handleResult} />
@@ -53,17 +66,8 @@ export function GeneralForm() {
 			<div className='container-result'>
 				<h3 className='title-result'>Wyniki:</h3>
 				{result}
-				{/* <p>&Delta; Delta = </p>
-				<p>Komunikat o tym czy delta jest wieksza od zera itd</p>
-				<p>x1 = </p>
-				<p>x2 = </p>
-				<p>p = </p>
-				<p>q = </p>
-				<p>Miejscami zerowymi są: </p>
-				<p>Współrzędne punktu przecięcia z osią OY: (0; -2.0 )</p>
-				<p>Współrzędne wierzchołka to W=( -0.5 , -2.5 )</p> */}
 			</div>
-			<BoxBtn onHandleReset={handleReset}/>
+			<BoxBtn onHandleReset={handleReset} />
 		</>
 	)
 }

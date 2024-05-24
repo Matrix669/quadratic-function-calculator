@@ -6,23 +6,28 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { GeneralForm } from './components/GeneralForm/GeneralForm.jsx'
 import { FactoredForm } from './components/FactoredForm/FactoredForm.jsx'
 import { CanonicalForm } from './components/CanonicalForm/CanonicalForm.jsx'
+import { NotFound } from './components/NotFound/NotFound.jsx'
 
 const router = createBrowserRouter([
 	{
 		element: <App />,
 		path: '/',
+    errorElement: <NotFound/>,
     children: [
       {
         element: <GeneralForm />,
-        path: 'postac-ogolna'
+        path: 'postac-ogolna',
+        errorElement: <NotFound/>,
       },
       {
         element: <FactoredForm />,
-        path: 'postac-iloczynowa'
+        path: 'postac-iloczynowa',
+        errorElement: <NotFound/>,
       },
       {
         element: <CanonicalForm />,
-        path: 'postac-kanoniczna'
+        path: 'postac-kanoniczna',
+        errorElement: <NotFound/>,
       },
     ]
 	},
