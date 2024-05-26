@@ -14,9 +14,9 @@ This is quadratic function calculator make in react. I really proud of idea of u
 
 # ToDos:
 
-| | - handle errors - inputs can't be empty
-| | - optimize the app because I have the same code in 3 components
-| | - add some animations between routing (optional)
+| | - handle errors - inputs can't be empty 
+| | - optimize the app because I have the same code in 3 components 
+| | - add some animations between routing (optional) 
 
 ### I learnt:
 
