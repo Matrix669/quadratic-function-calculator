@@ -10,7 +10,7 @@
 
 This is quadratic function calculator make in react. I really proud of idea of ultils function. But I am wondering if this is a good way to rendering next components in the place where is primary component (using condition in the way that I using).
 
-![quadratic-function-calculator](/quadratic-function-calculator/public/quadratic-function-calculator.png)
+![quadratic-function-calculator](./public/quadratic-function-calculator.png)
 
 # ToDos:
 
