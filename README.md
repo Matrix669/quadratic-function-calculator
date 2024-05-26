@@ -24,7 +24,7 @@ This is quadratic function calculator make in react. I really proud of idea of u
 
 ### What app do?
 
-This app calculates the zero spots, delta, whether delta is > 0, = 0, or < 0, and the coordinates of the vertex 'W'
+This app calculates the zero spots, delta, whether delta is > 0, = 0, or < 0, and the coordinates of the vertex 'W' based on the selected form of the function
 
 ### I learnt:
 
