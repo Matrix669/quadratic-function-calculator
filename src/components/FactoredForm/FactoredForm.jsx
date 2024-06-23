@@ -44,6 +44,7 @@ export function FactoredForm() {
 		setInputData2('')
 		setInputData3('')
 		setResult(null)
+		setErrorMsg(null)
 	}
 
 	return (

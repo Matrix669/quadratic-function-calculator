@@ -46,6 +46,7 @@ export function CanonicalForm() {
 		setInputData2('')
 		setInputData3('')
 		setResult(null)
+		setErrorMsg(null)
 	}
 
 	return (

@@ -44,6 +44,7 @@ export function GeneralForm() {
 		setInputData2('')
 		setInputData3('')
 		setResult(null)
+		setErrorMsg(null)
 	}
 
 	return (
