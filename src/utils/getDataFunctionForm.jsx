@@ -19,7 +19,7 @@ export function getDataFunctionForm(formFunction, userNum1, userNum2, userNum3) 
 				return (
 					<>
 						<p>Delta wynosi = {delta}</p>
-						<p>Delta jest większa od zera więc ma 2 miejsca zerowe!</p>
+						<p>Delta jest większa od zera więc mamy 2 miejsca zerowe!</p>
 						<p>x1 = {x1.toFixed(3)}</p>
 						<p>x2 = {x2.toFixed(3)}</p>
 						<p>p = {p}</p>

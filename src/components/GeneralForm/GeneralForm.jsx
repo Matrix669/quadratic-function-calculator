@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BoxBtn } from '../BoxBtn/BoxBtn'
 import { CalculateBtn } from '../CalculateBtn/CalculateBtn'
 import { useLocation } from 'react-router-dom'
-import { getDataFunctionForm } from '../utils/getDataFunctionForm'
+import { getDataFunctionForm } from '../../utils/getDataFunctionForm'
 
 export function GeneralForm() {
 	const location = useLocation()
+	const [error, setError] = useState(false)
+	const [errorMsg, setErrorMsg] = useState(null)
 	const [inputData1, setInputData1] = useState('')
 	const [inputData2, setInputData2] = useState('')
 	const [inputData3, setInputData3] = useState('')
@@ -13,13 +15,28 @@ export function GeneralForm() {
 
 	function getDataInput(data, event) {
 		const inputValue = event.target.value
-		const numsData = parseFloat(inputValue)
+		const numsData = Number(inputValue)
 		data(numsData)
 	}
 
 	function handleResult() {
-		const result = getDataFunctionForm(location.pathname, inputData1, inputData2, inputData3)
-		setResult(result)
+		if (
+			inputData1 === 0 ||
+			inputData1 === '' ||
+			inputData2 === 0 ||
+			inputData2 === '' ||
+			inputData3 === 0 ||
+			inputData3 === ''
+		) {
+			setError(true)
+			return setErrorMsg(<p className={'error-msg'}>Błąd!</p>)
+		} else {
+			setError(false)
+			setErrorMsg(null)
+
+			const result = getDataFunctionForm(location.pathname, inputData1, inputData2, inputData3)
+			setResult(result)
+		}
 	}
 
 	function handleReset() {
@@ -65,7 +82,7 @@ export function GeneralForm() {
 
 			<div className='container-result'>
 				<h3 className='title-result'>Wyniki:</h3>
-				{result}
+				{error ? errorMsg : result}
 			</div>
 			<BoxBtn onHandleReset={handleReset} />
 		</>

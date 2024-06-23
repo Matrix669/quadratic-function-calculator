@@ -7,6 +7,7 @@ import { GeneralForm } from './components/GeneralForm/GeneralForm.jsx'
 import { FactoredForm } from './components/FactoredForm/FactoredForm.jsx'
 import { CanonicalForm } from './components/CanonicalForm/CanonicalForm.jsx'
 import { NotFound } from './components/NotFound/NotFound.jsx'
+import { SelectFunction } from './components/SelectFunction/SelectFunction.jsx'
 
 const router = createBrowserRouter([
 	{
@@ -14,6 +15,11 @@ const router = createBrowserRouter([
 		path: '/',
     errorElement: <NotFound/>,
     children: [
+      {
+        element: <SelectFunction />,
+        path: '',
+        errorElement: <NotFound/>,
+      },
       {
         element: <GeneralForm />,
         path: 'postac-ogolna',

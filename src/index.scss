@@ -17,6 +17,12 @@ body {
 	background-color: #242424;
 	color: #fff;
 	height: 100vh;
+	overflow-x: hidden;
+}
+.error-msg {
+	font-size: 2rem;
+	color: tomato;
+	letter-spacing: 2px;
 }
 .title-fun {
 	font-size: 3rem;
