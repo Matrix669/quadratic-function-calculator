@@ -1,17 +1,33 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { BoxBtn } from '../BoxBtn/BoxBtn'
 import { CalculateBtn } from '../CalculateBtn/CalculateBtn'
-import { useLocation } from 'react-router-dom'
-import { getDataFunctionForm } from '../../utils/getDataFunctionForm'
+import { XYChart } from '../XYChart/XYChart'
+import { DeltaResult } from '../DeltaResult/DeltaResult'
 
 export function GeneralForm() {
-	const location = useLocation()
 	const [error, setError] = useState(false)
 	const [errorMsg, setErrorMsg] = useState(null)
-	const [inputData1, setInputData1] = useState('')
-	const [inputData2, setInputData2] = useState('')
-	const [inputData3, setInputData3] = useState('')
-	const [result, setResult] = useState(null)
+
+	const [inputDataA, setInputDataA] = useState('')
+	const [inputDataB, setInputDataB] = useState('')
+	const [inputDataC, setInputDataC] = useState('')
+	const [deltaValue, setDeltaValue] = useState('')
+	const [valueX1, setValueX1] = useState('')
+	const [valueX2, setValueX2] = useState('')
+	const [valueX0, setValueX0] = useState('')
+	const [valueP, setValueP] = useState('')
+	const [valueQ, setValueQ] = useState('')
+
+	const [isChartShown, setIsChartShown] = useState(false)
+	const [isResultsShown, setIsResultsShown] = useState(false)
+	const [inputsValues, setInputValues] = useState([])
+
+	let delta
+	let x1 // miejsce zerowe 1
+	let x2 // miejsce zerowe 2
+	let p // współrzędne wierzchołka 1
+	let q // współrzędne wierzchołka 2
+	let x0 // miejsce zerowe 0
 
 	function getDataInput(data, event) {
 		const inputValue = event.target.value
@@ -21,30 +37,49 @@ export function GeneralForm() {
 
 	function handleResult() {
 		if (
-			inputData1 === 0 ||
-			inputData1 === '' ||
-			inputData2 === 0 ||
-			inputData2 === '' ||
-			inputData3 === 0 ||
-			inputData3 === ''
+			inputDataA === 0 ||
+			inputDataA === '' ||
+			inputDataB === 0 ||
+			inputDataB === '' ||
+			inputDataC === 0 ||
+			inputDataC === ''
 		) {
 			setError(true)
-			return setErrorMsg(<p className={'error-msg'}>Błąd!</p>)
+			setIsChartShown(false)
+			setIsResultsShown(false)
+			setErrorMsg('Błąd')
 		} else {
 			setError(false)
 			setErrorMsg(null)
+			setIsChartShown(true)
 
-			const result = getDataFunctionForm(location.pathname, inputData1, inputData2, inputData3)
-			setResult(result)
+			// delta: b**2 - 4*a*c
+			delta = inputDataB ** 2 - 4 * inputDataA * inputDataC
+			x1 = (-inputDataB - Math.sqrt(delta)) / (2 * inputDataA)
+			x2 = (-inputDataB + Math.sqrt(delta)) / (2 * inputDataA)
+			x0 = -((inputDataB / 2) * inputDataA)
+
+			p = -inputDataB / (2 * inputDataA)
+			q = -delta / (4 * inputDataA)
+
+			setInputValues([inputDataA, inputDataB, inputDataC])
+			setDeltaValue(delta)
+			setValueX0(x0.toFixed(3))
+			setValueX1(x1.toFixed(3))
+			setValueX2(x2.toFixed(3))
+			setValueP(p.toFixed(3))
+			setValueQ(q.toFixed(3))
+			setIsResultsShown(true)
 		}
 	}
 
 	function handleReset() {
-		setInputData1('')
-		setInputData2('')
-		setInputData3('')
-		setResult(null)
+		setInputDataA('')
+		setInputDataB('')
+		setInputDataC('')
+		setIsResultsShown(false)
 		setErrorMsg(null)
+		setIsChartShown(false)
 	}
 
 	return (
@@ -56,26 +91,26 @@ export function GeneralForm() {
 
 			<div>
 				<p className='user-fun'>
-					y ={' '}
+					y =
 					<input
 						type='number'
 						placeholder='a'
-						value={inputData1}
-						onChange={event => getDataInput(setInputData1, event)}
+						value={inputDataA}
+						onChange={event => getDataInput(setInputDataA, event)}
 					/>
-					x<sup>2</sup> +{' '}
+					x<sup>2</sup> +
 					<input
 						type='number'
 						placeholder='b'
-						value={inputData2}
-						onChange={event => getDataInput(setInputData2, event)}
-					/>{' '}
-					x +{' '}
+						value={inputDataB}
+						onChange={event => getDataInput(setInputDataB, event)}
+					/>
+					x +
 					<input
 						type='number'
 						placeholder='c'
-						value={inputData3}
-						onChange={event => getDataInput(setInputData3, event)}
+						value={inputDataC}
+						onChange={event => getDataInput(setInputDataC, event)}
 					/>
 				</p>
 			</div>
@@ -83,7 +118,29 @@ export function GeneralForm() {
 
 			<div className='container-result'>
 				<h3 className='title-result'>Wyniki:</h3>
-				{error ? errorMsg : result}
+				<div className='container-result__results'>
+					<div className='textBox'>
+						{error && <p className='error-msg'>{errorMsg}</p>}
+						{isResultsShown && (
+							<DeltaResult
+								delta={deltaValue}
+								x1={valueX1}
+								x2={valueX2}
+								x0={valueX0}
+								p={valueP}
+								q={valueQ}
+								a={inputsValues[0]}
+								b={inputsValues[1]}
+								c={inputsValues[2]}
+							/>
+						)}
+					</div>
+					{isChartShown && (
+						<div className='canvasBox'>
+							<XYChart a={inputsValues[0]} b={inputsValues[1]} c={inputsValues[2]} />
+						</div>
+					)}
+				</div>
 			</div>
 			<BoxBtn onHandleReset={handleReset} />
 		</>

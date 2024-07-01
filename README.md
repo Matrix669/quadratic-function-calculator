@@ -17,9 +17,11 @@ This is quadratic function calculator make in react. I really proud of idea of u
 
 | x | - handle errors - inputs can't be empty
 
-| | - optimize the app because I have the same code in 3 components
-
 | | - add some animations between routing (optional)
+
+| x | - add a graph
+
+| x | - make RWD
 
 ### What app do?
 
@@ -28,6 +30,7 @@ This app calculates the zero spots, delta, whether delta is > 0, = 0, or < 0, an
 ### I learnt:
 
 - simple use of using react routing
+- used chart.js a bit 
 
 ### Problem:
 
