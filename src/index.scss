@@ -25,30 +25,8 @@ body {
 	width: 100vw;
 	overflow: hidden;
 }
-// background
-.bg-text {
-	position: absolute;
-	font-size: 4rem;
-	font-weight: bold;
-	z-index: -10;
-	color: $text;
-}
-
-.bg-x2 {
-	top: 0;
-	right: 70%;
-	animation: slideDown 12s linear infinite;
-}
-
-.bg-fx {
-	top: 50%;
-	left: 0;
-	animation: moveRight 12s linear infinite;
-}
 
 
-
-// ----
 .error-msg {
 	font-size: 2rem;
 	color: $error;
