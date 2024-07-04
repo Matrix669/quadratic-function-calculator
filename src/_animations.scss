@@ -1,0 +1,34 @@
+@keyframes slideDown {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(100vh);
+	}
+}
+@keyframes moveRight {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(100vw);
+	}
+}
+
+@keyframes draw-line {
+	0% {
+        stroke-dashoffset: 200;
+      }
+      25% {
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dashoffset: 0;
+      }
+      75% {
+        stroke-dashoffset: -200;
+      }
+      100% {
+        stroke-dashoffset: -200;
+      }
+}

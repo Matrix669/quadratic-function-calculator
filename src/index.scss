@@ -1,3 +1,6 @@
+@use 'animations' as *;
+@use 'colors' as *;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -14,14 +17,41 @@ body {
 	justify-content: center;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.6rem;
-	background-color: #242424;
-	color: #fff;
+	// background-color: #242424;
+	background: linear-gradient(45deg, #242424, #3a3a3a);
+
+	color: $text;
 	min-height: 100vh;
-	overflow-x: hidden;
+	width: 100vw;
+	overflow: hidden;
 }
+// background
+.bg-text {
+	position: absolute;
+	font-size: 4rem;
+	font-weight: bold;
+	z-index: -10;
+	color: $text;
+}
+
+.bg-x2 {
+	top: 0;
+	right: 70%;
+	animation: slideDown 12s linear infinite;
+}
+
+.bg-fx {
+	top: 50%;
+	left: 0;
+	animation: moveRight 12s linear infinite;
+}
+
+
+
+// ----
 .error-msg {
 	font-size: 2rem;
-	color: tomato;
+	color: $error;
 	letter-spacing: 2px;
 }
 .title-fun {
@@ -37,40 +67,40 @@ button {
 }
 a {
 	text-decoration: none;
-	color: #fff;
+	color: $text;
 }
 .formBtn {
 	background: none;
-	border: 1px solid #707070;
+	border: 1px solid $primary;
 	border-radius: 12px;
 	padding: 1em 2em;
-	color: #fff;
+	color: $text;
 	font-size: 1.6rem;
 	width: 100%;
 	transition: background-color 0.3s;
 	cursor: pointer;
 	&:hover {
-		background-color: #707070;
+		background-color: $primary;
 	}
 }
 .user-fun {
 	margin: 2em 0;
 	& input {
 		background: none;
-		border: 2px solid #707070;
+		border: 2px solid $primary;
 		border-radius: 12px;
 		font-size: 1.6rem;
 		text-align: center;
-		color: #fff;
+		color: $text;
 		padding: 0.5em 1em;
 		width: 100%;
 		max-width: 100px;
 		margin: 0 0.5em;
 		&::placeholder {
-			color: #707070;
+			color: $primary;
 		}
 		&:focus {
-			border: 2px solid #fff;
+			border: 2px solid $text;
 		}
 	}
 }

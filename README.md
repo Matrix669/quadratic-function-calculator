@@ -9,9 +9,6 @@
 https://quadratic-function-calculator.netlify.app/
 
 
-### Description
-
-This is quadratic function calculator make in react. I really proud of idea of ultils function. But I am wondering if this is a good way to rendering next components in the place where is primary component (using condition in the way that I using in App.jsx).
 
 # ToDos:
 
@@ -23,9 +20,11 @@ This is quadratic function calculator make in react. I really proud of idea of u
 
 | x | - make RWD
 
+| x | - apply some cool styling
+
 ### What app do?
 
-This app calculates the zero spots, delta, whether delta is > 0, = 0, or < 0, and the coordinates of the vertex 'W' based on the selected form of the function
+This app calculates the zero spots, delta, whether delta is > 0, = 0, or < 0, and the coordinates of the vertex 'W' based on the selected form of the function and also shows chart
 
 ### I learnt:
 

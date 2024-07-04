@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { CalculatorLayout } from './components/CalculatorLayout/CalculatorLayout'
+import { LineSVG } from './components/LineSVG/LineSVG'
 
 function App() {
-
 	return (
 		// <CalculatorLayout>
 		// <AnimatePresence>
@@ -19,9 +19,18 @@ function App() {
 		// 	</motion.div>
 		// </AnimatePresence>
 		// </CalculatorLayout>
-		<CalculatorLayout>
-			<Outlet />
-		</CalculatorLayout>
+		<>
+			<div className='background-box'>
+				<p className='bg-text bg-x2'>
+					x <sup>2</sup>
+				</p>
+				<p className='bg-text bg-fx'>f(x) = y</p>
+			</div>
+			<CalculatorLayout>
+				<Outlet />
+			</CalculatorLayout>
+			<LineSVG />
+		</>
 	)
 }
 

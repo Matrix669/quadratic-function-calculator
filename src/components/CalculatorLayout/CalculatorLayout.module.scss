@@ -1,7 +1,13 @@
+@use '../../colors' as *;
+
 .calculatorLayout {
-    background-color: #333;
+    position: relative;
+    max-width: 1200px;
+    background-color: $bgc;
+    border: 1px solid #ffffff2e;
     border-radius: 12px;
     padding: 2em 1em;
+    backdrop-filter: blur(8px);
 }
 
 @media (min-width: 414px) {

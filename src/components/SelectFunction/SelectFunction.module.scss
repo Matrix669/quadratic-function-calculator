@@ -1,3 +1,5 @@
+@use '../../colors' as *;
+
 .title {
 	font-size: 2.4rem;
     text-align: center;
@@ -6,17 +8,17 @@
 .link {
 	display: block;
 	width: 100%;
-	color: #fff;
+	color: $text;
 	padding: 2em;
 	margin: 1em 0;
 	text-decoration: none;
 	border-radius: 12px;
 	border: 1px solid transparent;
-	background-color: #707070;
+	background-color: $primary;
 	transition: background-color 0.3s, border-color 0.3s;
 	&:hover {
-		background-color: #333;
-		border-color: #707070;
+		background-color: $bgc;
+		border-color: $primary;
 	}
 }
 

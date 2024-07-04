@@ -1,0 +1,17 @@
+@use '../../animations' as *;
+
+svg {
+	position: absolute;
+	bottom: -20%;
+	left: 22%;
+	z-index: -10;
+}
+
+svg path {
+	stroke: #ffffff;
+	stroke-width: 0.1;
+	fill: none;
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+	animation: draw-line 3s linear infinite;
+}
