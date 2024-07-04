@@ -1,4 +1,4 @@
-import './LineSVG.module.scss'
+import './LineSVG.scss'
 
 export function LineSVG() {
 	return (
