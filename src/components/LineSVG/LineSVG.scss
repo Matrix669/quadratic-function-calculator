@@ -1,17 +1,23 @@
 @use '../../animations' as *;
 
-svg {
+.line {
 	position: absolute;
-	bottom: -20%;
+	bottom: 0;
 	left: 22%;
 	z-index: -10;
 }
 
-svg path {
+.line path {
 	stroke: #ffffff;
 	stroke-width: 0.1;
 	fill: none;
 	stroke-dasharray: 200;
 	stroke-dashoffset: 200;
 	animation: draw-line 3s linear infinite;
+}
+
+@media (max-width: 576px) {
+	.line {
+		left: -20%;
+	}
 }

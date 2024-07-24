@@ -17,16 +17,17 @@ body {
 	justify-content: center;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.6rem;
-	// background-color: #242424;
 	background: linear-gradient(45deg, #242424, #3a3a3a);
-
 	color: $text;
 	min-height: 100vh;
 	width: 100vw;
+	overflow-x: hidden;
+}
+.test {
+	position: relative;
+	z-index: 0;
 	overflow: hidden;
 }
-
-
 .error-msg {
 	font-size: 2rem;
 	color: $error;

@@ -2,7 +2,7 @@
 @use '../../animations' as *;
 
 .bg-text {
-	position: absolute;
+	position: fixed;
 	font-size: 4rem;
 	font-weight: bold;
 	z-index: -10;
