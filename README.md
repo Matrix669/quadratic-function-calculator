@@ -6,7 +6,7 @@
 
 # Demo
 
-https://quadratic-function-calculator.netlify.app/
+[quadratic-function-calculator](https://quadratic-function-calculator.netlify.app/)
 
 
 
